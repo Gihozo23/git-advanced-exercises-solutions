@@ -384,3 +384,103 @@ Date:   Tue May 21 11:39:52 2024 +0200
 ```
 
 ### Challenge 8: Cherry-Picking Commits:
+
+```bash
+ HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git checkout -b ft/banch
+Switched to a new branch 'ft/banch'
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/banch)
+$ git add test5.md
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/banch)
+$ git commit -m "Implemented test 5"
+[ft/banch e344992] Implemented test 5
+ 1 file changed, 1 insertion(+)      
+ create mode 100644 test5.md
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/banch)
+$ git log
+commit e344992cb0e276e922712c5ce8ab591a42321279 (HEAD -> ft/banch)
+Author: Gihozo23 <christellegihozo23@gmail.com>
+Date:   Tue May 21 12:56:44 2024 +0200
+
+    Implemented test 5
+
+commit 88990d8ee9d2b18e01f7e0cd206c5187780e2f05 (main)      
+Author: Gihozo23 <christellegihozo23@gmail.com>
+Date:   Mon May 20 18:02:54 2024 +0200
+
+    Creating the initial and second files
+
+    chore: Create initial file
+
+    chore: Create second file
+
+commit ec3827025004328c0d7071bd312d45c65fdc907f
+Author: Gihozo23 <christellegihozo23@gmail.com>
+Date:   Tue May 21 11:39:52 2024 +0200
+
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/banch)
+$ git checkout main
+Switched to branch 'main'
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git cherry-pick --no-commit e344992cb0e276e922712c5ce8ab591a42321279
+
+ ```
+
+### challenge 9: Visualizing Commit History (Bonus)
+
+```bash
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git log --graph
+* commit 88990d8ee9d2b18e01f7e0cd206c5187780e2f05 (HEAD -> main)
+| Author: Gihozo23 <christellegihozo23@gmail.com>
+| Date:   Mon May 20 18:02:54 2024 +0200
+|
+|     Creating the initial and second files
+|
+|     chore: Create initial file
+|
+|     chore: Create second file
+|
+* commit ec3827025004328c0d7071bd312d45c65fdc907f
+  Author: Gihozo23 <christellegihozo23@gmail.com>
+  Date:   Tue May 21 11:39:52 2024 +0200
+
+      Create third and fourth files
+
+      Create third file
+
+      Create fourth file
+
+
+```
+
+### challenge 10: Understanding Reflogs (Bonus)
+
+```bash
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git reflog
+88990d8 (HEAD -> main) HEAD@{0}: checkout: moving from ft/banch to main
+e344992 (ft/banch) HEAD@{1}: commit: Implemented test 5     
+88990d8 (HEAD -> main) HEAD@{2}: checkout: moving from main 
+to ft/banch
+88990d8 (HEAD -> main) HEAD@{3}: rebase (finish): returning 
+to refs/heads/main
+88990d8 (HEAD -> main) HEAD@{4}: rebase (pick): Creating the initial and second files
+ec38270 HEAD@{5}: rebase (pick): Create third and fourth files
+c992bde HEAD@{6}: rebase (start): checkout c992bdea3f231e9e605c71962c74515366fc28e7
+8cfbadf HEAD@{7}: rebase (finish): returning to refs/heads/main
+8cfbadf HEAD@{8}: rebase (start): checkout HEAD~1
+8cfbadf HEAD@{9}: rebase (finish): returning to refs/heads/main
+8cfbadf HEAD@{10}: rebase (start): checkout HEAD~
+8cfbadf HEAD@{11}: rebase (finish): returning to refs/heads/main
+8cfbadf HEAD@{12}: rebase (start): checkout head~2
+831bee9 HEAD@{13}: rebase (finish): returning to refs/heads/:
+
+```
