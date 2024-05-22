@@ -710,3 +710,191 @@ HEAD is now at 07300fb Updated project readme
 
 HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises ((07300fb...))
 ```
+## Part 3  
+
+### Challenge 1: Stashing Changes
+
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   feature.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git stash
+Saved working directory and 
+index state WIP on main: 7d7aa86 Merge branch 'ft/new-feature'
+
+
+```
+
+### challenge 2: Retrieving Stashed Changes
+```bash
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git stash pop
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   feature.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (63803a90ba71a73cb8199c2392eed1b4e5f24fd6)
+
+
+```
+
+### Challenge 3: Branch Merging Conflicts (Continued)
+
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git checkout ft/improved-branch-nam
+Switched to branch 'ft/improved-branch-nam'
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/improved-branch-nam)        
+$ git add .
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/improved-branch-nam)        
+$ git checkout main
+error: Your local changes to the following files would be overwritten by checkout:  
+        feature.txt
+Please commit your changes or stash them before you switch branches.
+Aborting
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/improved-branch-nam)        
+$ git commit -m "feature.txt modified from the improved-branch"
+[ft/improved-branch-nam dd1d1f5] feature.txt modified from the improved-branch      
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/improved-branch-nam)        
+$ git checkout main
+Switched to branch 'main'
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git merge ft/improved-branch-nam
+Auto-merging feature.txt
+CONFLICT (content): Merge conflict in feature.txt       
+Automatic merge failed; fix conflicts and then commit the 
+conflicts and then commit the result.
+                            
+```
+
+### Challenge 4: Resolving Merge Conflicts with a Merge Tool
+
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git merge ft/improved-branch-nam
+Auto-merging feature.txt
+CONFLICT (content): Merge conflict in feature.txt       
+Automatic merge failed; fix conflicts and then commit the 
+conflicts and then commit the result.
+                            /Desktop/theGym/git advanced/g
+HP@DESKTOP-VK7L602 MINGW64 ~MERGING)/Desktop/theGym/git advanced/git-advanced-exercises (main|MERGING)
+$ git mergetool
+
+This message is displayed because 'merge.tool' is not configured.
+See 'git mergetool --tool-help' or 'git help config' for more details.
+'git mergetool' will now attempt to use one of the following tools:
+opendiff kdiff3 tkdiff xxdiff meld tortoisemerge gvimdiff diffuse diffmerge ecmerge 
+p4merge araxis bc codecompare smerge emerge vimdiff nvimdiff
+Merging:
+  {local}: modified file    
+  {remote}: modified file   
+Hit return to start merge reeature.txt':solution tool (vimdiff):    
+```
+
+### Challenge 5: Understanding Detached HEAD State
+
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/improved-branch-nam)
+$ git checkout 07300fbfa63335a5867e1741ada7f0d5ea8c8752
+Note: switching to '07300fbfa63335a5867e1741ada7f0d5ea8c8752'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+do so (now or later) by usin you can discard any commits yg -c with the switch command. Example:                  branches by switching back to 
+
+  git switch -c <new-branch-name>                       branch to retain commits you c
+
+Or undo this operation with:g -c with the switch command. 
+
+
+  git switch -              name>
+
+Turn off this advice by setting config variable advice.detachedHead to false        
+
+HEAD is now at 07300fb Updating config variable advice.deted project readme
+
+HP@DESKTOP-VK7L602 MINGW64 ~ed project readme/Desktop/theGym/git advanced/git-advanced-exercises ((07/Desktop/theGym/git advanced/g300fb...))                  0fb...))
+$ git checkout main
+Previous HEAD position was 07300fb Updated project readme
+Switched to branch 'main'
+
+```
+
+### Challenge 6: Ignoring Files/Directories
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main|MERGING)
+$ touch .gitignore
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git add .
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git commit -m ".gitignore file created"
+[main ec3d45a] .gitignore file created
+ 2 files changed, 1 insertion(+)   
+ create mode 100644 .gitignore     
+ create mode 100644 hey.tmp        
+```
+
+### challenge 7: Working with Tags
+
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git tag v1.0
+```
+
+### Challenge 8: Listing and deleting tags
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git tag
+v1.0
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git tag -d v1.0
+Deleted tag 'v1.0' (was ec3d45a)
+
+```
+
+### Challenge 9: Pushing Local Work to Remote Repositories
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git push --set-upstream origin main
+Enumerating objects: 27, done.
+Counting objects: 100% (27/27), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (23/23), done.
+Writing objects: 100% (27/27), 2.41 KiB | 411.00 KiB/s, done.
+Total 27 (delta 11), reused 0 (delta 0), pack-reused 0    
+remote: Resolving deltas: 100% (11/11), done.
+To https://github.com/Gihozo23/git-advanced-exercises.git 
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+```
+
+### Challenge 10: Pulling Changes from Remote Repositories
+
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git pull origin
+Updating ec3d45a..7f036b5
+Fast-forward
+ readme.md | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+```
