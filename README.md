@@ -484,3 +484,229 @@ c992bde HEAD@{6}: rebase (start): checkout c992bdea3f231e9e605c71962c74515366fc2
 831bee9 HEAD@{13}: rebase (finish): returning to refs/heads/:
 
 ```
+
+## Part 2
+### Challenge 1: 
+
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git checkout -b ft/new-feature
+Switched to a new branch 'ft/new-feature'
+
+```
+
+### challenge 2: 
+
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~re/Desktop/theGym/git advanced/git-advanced-exercises (ft//Desktop/theGym/git advanced/gnew-feature)                w-feature)
+$ git add feature.txt
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/new-feature)
+$ git commit -m "Implemented core functionality for new 
+feature"
+[ft/new-feature a89d1c8] Implemented core functionality 
+for new feature
+ 2 files changed, 2 insertions(+)
+ create mode 100644 feature.txt
+ create mode 100644 test5.md
+```
+
+### Challenge 3:
+
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/new-feature)
+$ git checkout main
+Switched to branch 'main'
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        readme.txt
+
+nothing added to commit but 
+untracked files present (use "git add" to track)        
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git add readme.txt
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git commit -m "Updated project readme"
+[main 07300fb] Updated project readme
+ 1 file changed, 1 insertion(+)
+ create mode 100644 readme.txt
+
+```
+
+### Challenge 4: 
+
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git log --oneline
+07300fb (HEAD -> main) Updated project readme
+88990d8 Creating the initial and second files
+ec38270 Create third and fourth files
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ cat .git/refs/heads/main
+07300fbfa63335a5867e1741ada7f0d5ea8c8752
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git log
+commit 07300fbfa63335a5867e1741ada7f0d5ea8c8752 (HEAD -> main)
+Author: Gihozo23 <christellegihozo23@gmail.com>
+Date:   Wed May 22 10:44:05 2024 +0200
+
+    Updated project readme
+
+commit 88990d8ee9d2b18e01f7e0cd206c5187780e2f05
+Author: Gihozo23 <christellegihozo23@gmail.com>
+Date:   Mon May 20 18:02:54 2024 +0200
+
+    Creating the initial and second files
+
+    chore: Create initial file
+
+    chore: Create second file
+
+commit ec3827025004328c0d7071bd312d45c65fdc907f
+Author: Gihozo23 <christellegihozo23@gmail.com>
+Date:   Tue May 21 11:39:52 2024 +0200
+
+    Create third and fourth files
+
+
+```
+
+### Challenge 5: Branch deletion
+
+```bash
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git merge ft/new-feature
+Merge made by the 'ort' strategy.
+ feature.txt | 1 +
+ test5.md    | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 feature.txt
+ create mode 100644 test5.md
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git branch -d ft/new-feature
+Deleted branch ft/new-feature (was a89d1c8).
+
+```
+
+### challenge 6: Creating a Branch from a Commit
+
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git log --oneline
+7d7aa86 (HEAD -> main) Merge branch 'ft/new-feature'  
+07300fb Updated project readme
+a89d1c8 Implemented core functionality for new feature
+88990d8 Creating the initial and second files
+ec38270 Create third and fourth files
+Switched to branch 'main'   
+                            
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git merge ft/new-branch-fr/Desktop/theGym/git advanced/gom-commit
+Already up to date.
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git checkout -b ft/new-branch-from-commit a89d1c8
+Switched to branch 'ft/new-branch-from-commit'
+                            
+```
+### challenge 7 :
+
+
+``bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/new-branch-from-commit)
+$ git checkout main
+Switched to branch 'main'
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git merge ft/new-branch-from-commit
+Already up to date.
+
+```
+
+### Challenge 8 : Rebasing branch
+
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (main)
+$ git checkout ft/new-branch-from-commit
+Switched to branch 'ft/new-branch-from-commit'
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/new-branch-from-commit)
+$ git rebase main
+Successfully rebased and updated refs/heads/ft/new-branch-from-commit.
+
+
+```
+
+### challenge 9: Renaming branch
+
+
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/new-branch-from-commit)
+$ git branch -m ft/new-branch-from-commit ft/improved-branch-nam
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/improved-branch-nam)
+
+```
+
+### Challenge 10: Checking Out Detached HEAD
+```bash
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/improved-branch-nam)
+$ git log
+commit 7d7aa861b297dd62eac081bc32ef89abd3a7eea7 (HEAD -> ft/improved-branch-nam, main)
+Merge: 07300fb a89d1c8
+Author: Gihozo23 <christellegihozo23@gmail.com>
+Date:   Wed May 22 10:56:37 2024 +0200
+
+    Merge branch 'ft/new-feature'
+
+commit 07300fbfa63335a5867e1741ada7f0d5ea8c8752
+Author: Gihozo23 <christellegihozo23@gmail.com>
+Date:   Wed May 22 10:44:05 2024 +0200
+
+    Updated project readme
+
+commit a89d1c8d935fdf429576518d9ef2e2f4f6d6f609
+Author: Gihozo23 <christellegihozo23@gmail.com>
+Date:   Tue May 21 22:53:27 2024 +0200
+
+    Implemented core functionality for new feature        
+
+commit 88990d8ee9d2b18e01f7e0cd206c5187780e2f05
+Author: Gihozo23 <christellegihozo23@gmail.com>
+Date:   Mon May 20 18:02:54 2024 +0200
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises (ft/improved-branch-nam)
+$ git checkout 07300fbfa63335a5867e1741ada7f0d5ea8c8752
+Note: switching to '07300fbfa63335a5867e1741ada7f0d5ea8c8752'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to 
+a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. 
+Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 07300fb Updated project readme
+
+HP@DESKTOP-VK7L602 MINGW64 ~/Desktop/theGym/git advanced/git-advanced-exercises ((07300fb...))
+```
